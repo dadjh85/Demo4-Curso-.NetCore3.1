@@ -15,20 +15,35 @@ namespace Demo4
 {
     public class Startup
     {
+        /// <summary>
+        /// Constructor of startup
+        /// </summary>
+        /// <param name="configuration"></param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
+        /// <summary>
+        /// Object of load the personal configuration
+        /// </summary>
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        /// <summary>
+        /// dependency injection container of .NET Core
+        /// </summary>
+        /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddLogging();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+
+        /// <summary>
+        /// pipeline of netcore
+        /// </summary>
+        /// <param name="services"></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -44,7 +59,16 @@ namespace Demo4
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllerRoute(name: "areaRoute",
+                                            pattern: "{area:exists}/{controller}/{action}",
+                                            defaults: new { action = "Index" });
+
+                endpoints.MapControllerRoute(name: "default",
+                                             pattern: "{controller}/{action}/{id?}",
+                                             defaults: new { controller = "Home", action = "Index" });
+
+                endpoints.MapControllerRoute(name: "api",
+                                             pattern: "{controller}/{id?}");
             });
         }
     }
