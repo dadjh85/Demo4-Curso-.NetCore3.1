@@ -1,5 +1,5 @@
 ﻿
-namespace Demo4.DtoModels
+namespace Service.DtoModels
 {
     public class DtoRolAdd
     {

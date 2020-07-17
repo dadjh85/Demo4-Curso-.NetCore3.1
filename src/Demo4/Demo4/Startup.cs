@@ -5,8 +5,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Service.UserService;
 
 //[assembly: ApiController]
+[assembly: ApiConventionType(typeof(DefaultApiConventions))]
 namespace Demo4
 {
     public class Startup
@@ -32,6 +34,7 @@ namespace Demo4
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddScoped<IUserService, UserService>();
             services.AddLogging();
         }
 

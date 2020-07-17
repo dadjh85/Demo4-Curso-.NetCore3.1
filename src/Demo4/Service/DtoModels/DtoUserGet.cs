@@ -1,8 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Text;
 
-namespace Demo4.DtoModels
+namespace Service.DtoModels
 {
-    public class DtoUserAdd
+    public class DtoUserGet
     {
         public int Id { get; set; }
         [Required]
@@ -12,5 +15,6 @@ namespace Demo4.DtoModels
         public string Password { get; set; }
         [Required]
         public string Name { get; set; }
+        public DateTime? StartDate { get; set; }
     }
 }
