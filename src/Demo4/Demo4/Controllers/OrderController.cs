@@ -4,9 +4,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Demo4.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class OrderController : ControllerBase
+    public class OrderController : GenericController
     {
         private readonly ILogger _logger;
 

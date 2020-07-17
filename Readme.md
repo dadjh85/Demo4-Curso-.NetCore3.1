@@ -1,10 +1,10 @@
 ##  Demo 4 - Curso .NET Core 3.1  ##
 
 * Controllers en un API-REST .NET Core
-* Rutas en .NET Core
-* Atributo ApiController
-* Convenciones en .NET Core
-* Validaciones 
+	* Rutas en .NET Core
+	* Atributo ApiController
+	* Objeto IActionResult
+	* Convenciones en .NET Core
 * Ruteo en .NET Core
 * Programación asíncrona 
 * Manipulación de recursos (resx)
