@@ -1,4 +1,5 @@
 
+using Demo4.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +12,9 @@ using Service.UserService;
 [assembly: ApiConventionType(typeof(DefaultApiConventions))]
 namespace Demo4
 {
+    /// <summary>
+    /// Startup class for init .NET Core
+    /// </summary>
     public class Startup
     {
         /// <summary>
@@ -33,6 +37,7 @@ namespace Demo4
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSwagger();
             services.AddControllers();
             services.AddScoped<IUserService, UserService>();
             services.AddLogging();
@@ -42,7 +47,8 @@ namespace Demo4
         /// <summary>
         /// pipeline of netcore
         /// </summary>
-        /// <param name="services"></param>
+        /// <param name="app"></param>
+        /// <param name="env"></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -50,11 +56,14 @@ namespace Demo4
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSwagger(env);
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
             app.UseAuthorization();
+
 
             app.UseEndpoints(endpoints =>
             {
