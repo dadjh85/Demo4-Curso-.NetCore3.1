@@ -41,6 +41,8 @@ namespace Demo4
             services.AddControllers();
             services.AddScoped<IUserService, UserService>();
             services.AddLogging();
+            services.AddAuthentication();
+            services.AddAuthentication();
         }
 
 
@@ -62,6 +64,7 @@ namespace Demo4
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
 
