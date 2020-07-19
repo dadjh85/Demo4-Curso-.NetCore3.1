@@ -6,7 +6,7 @@ namespace Demo4.Controllers
     /// <summary>
     /// Controler of customer
     /// </summary>
-    //[AllowAnonymous]
+    [AllowAnonymous]
     public class CustomerController : ControllerBase
     {
         /// <summary>

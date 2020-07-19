@@ -26,6 +26,14 @@ namespace Demo4
         }
 
         /// <summary>
+        /// Name of policy of cors
+        /// </summary>
+        public readonly string AllowAllOriginsCors = "AllowAllOrigins";
+
+
+
+
+        /// <summary>
         /// Object of load the personal configuration
         /// </summary>
         public IConfiguration Configuration { get; }
@@ -42,6 +50,7 @@ namespace Demo4
             services.AddLogging();
             services.AddSecurity(Configuration);
             services.AddAuthorization();
+            services.AddCorsPolicy(Configuration, AllowAllOriginsCors);
         }
 
 
@@ -52,6 +61,8 @@ namespace Demo4
         /// <param name="env"></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors(AllowAllOriginsCors);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

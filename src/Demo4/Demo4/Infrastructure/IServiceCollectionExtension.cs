@@ -39,6 +39,36 @@ namespace Demo4.Infrastructure
         }
 
         /// <summary>
+        /// Configure Cors of app
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        /// <param name="corsPolicyName"></param>
+        /// <returns></returns>
+        public static IServiceCollection AddCorsPolicy(this IServiceCollection services, IConfiguration configuration, string corsPolicyName)
+        {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(corsPolicyName,
+                                  builder => builder.AllowAnyOrigin()
+                                                    .AllowAnyMethod()
+                                                    .AllowAnyHeader());
+            });
+
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy(corsPolicyName, policy =>
+            //    {
+            //        string[] origin = configuration.GetSection("AllowedHosts").Get<string[]>();
+            //        policy.WithOrigins(origin).AllowAnyHeader()
+            //                                  .AllowAnyMethod();
+            //    });
+            //});
+
+            return services;
+        }
+
+        /// <summary>
         /// Service that loads the swagger configuration 
         /// </summary>
         /// <param name="services"></param>
