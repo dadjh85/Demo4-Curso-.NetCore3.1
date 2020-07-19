@@ -60,9 +60,23 @@ namespace IdentityServer
                             new Claim("name", "User2"),
                             new Claim("given_name", "User2"),
                             new Claim("family_name", "User2"),
-                            new Claim("email", "emailUser1@emailUser1.com"),
+                            new Claim("email", "emailUser2@emailUser2.com"),
                             new Claim("email_verified", "true", ClaimValueTypes.Boolean),
                             new Claim("role", "Client")
+                        }
+                    },
+                    new TestUser()
+                    {
+                        SubjectId = "3",
+                        Username = "user3",
+                        Password = "pass3",
+                        Claims = {
+                            new Claim("name", "User2"),
+                            new Claim("given_name", "User3"),
+                            new Claim("family_name", "User3"),
+                            new Claim("email", "emailUser3@emailUser3.com"),
+                            new Claim("email_verified", "true", ClaimValueTypes.Boolean),
+                            new Claim("role", "User")
                         }
                     }
                };

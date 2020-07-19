@@ -1,5 +1,6 @@
 
 using Demo4.Infrastructure;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -41,8 +42,8 @@ namespace Demo4
             services.AddControllers();
             services.AddScoped<IUserService, UserService>();
             services.AddLogging();
-            services.AddAuthentication();
-            services.AddAuthentication();
+            services.AddSecurity(Configuration);
+            services.AddAuthorization();
         }
 
 
@@ -80,6 +81,9 @@ namespace Demo4
 
                 endpoints.MapControllerRoute(name: "api",
                                              pattern: "{controller}/{id?}");
+
+                //endpoints.MapControllers()
+                         //.RequireAuthorization(new AuthorizeAttribute());
             });
         }
     }

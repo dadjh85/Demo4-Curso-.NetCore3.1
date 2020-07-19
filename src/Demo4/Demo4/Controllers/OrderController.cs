@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -7,6 +8,7 @@ namespace Demo4.Controllers
     /// <summary>
     /// Example of controller
     /// </summary>
+    //[AllowAnonymous]
     public class OrderController : GenericController
     {
         private readonly ILogger _logger;
