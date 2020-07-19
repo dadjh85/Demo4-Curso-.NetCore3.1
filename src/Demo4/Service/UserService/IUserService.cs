@@ -6,6 +6,6 @@ namespace Service.UserService
 {
     public interface IUserService
     {
-        Task<List<DtoUserGet>> GetList();
+        Task<List<DtoUserGet>> GetList(bool isRolUser);
     }
 }

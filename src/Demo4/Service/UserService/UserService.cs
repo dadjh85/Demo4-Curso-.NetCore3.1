@@ -10,7 +10,7 @@ namespace Service.UserService
     public class UserService : IUserService
     {
 
-        public async Task<List<DtoUserGet>> GetList()
+        public async Task<List<DtoUserGet>> GetList(bool isRolUser)
         {
             await Task.Delay(2);
             List<DtoUserGet> users = new List<DtoUserGet>();
@@ -25,7 +25,11 @@ namespace Service.UserService
                     StartDate = DateTime.Now
                 });
             }
-            return users;
+
+            if (isRolUser)
+               return new List<DtoUserGet> { users.FirstOrDefault() };
+            else
+                return users;
         }
     }
 }

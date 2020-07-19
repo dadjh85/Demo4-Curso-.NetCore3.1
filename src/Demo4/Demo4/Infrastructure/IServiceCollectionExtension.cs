@@ -33,6 +33,8 @@ namespace Demo4.Infrastructure
                         options.ApiName = securityClients.ApiName; 
                     });
 
+            services.AddAuthorization(options => options.AddPolicy("AdminAndUser", policy => policy.RequireRole("administrator", "user")));
+
             return services;
         }
 

@@ -62,7 +62,7 @@ namespace IdentityServer
                             new Claim("family_name", "User2"),
                             new Claim("email", "emailUser2@emailUser2.com"),
                             new Claim("email_verified", "true", ClaimValueTypes.Boolean),
-                            new Claim("role", "Client")
+                            new Claim("role", "client")
                         }
                     },
                     new TestUser()
@@ -76,7 +76,7 @@ namespace IdentityServer
                             new Claim("family_name", "User3"),
                             new Claim("email", "emailUser3@emailUser3.com"),
                             new Claim("email_verified", "true", ClaimValueTypes.Boolean),
-                            new Claim("role", "User")
+                            new Claim("role", "user")
                         }
                     }
                };

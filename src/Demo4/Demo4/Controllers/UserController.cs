@@ -10,7 +10,7 @@ namespace Demo4.Controllers
     /// <summary>
     /// Controler of User
     /// </summary>
-    [Authorize]
+    [Authorize(Policy = "AdminAndUser")]
     public class UserController : GenericController
     {
         private readonly IUserService _userService;
@@ -31,7 +31,7 @@ namespace Demo4.Controllers
         [HttpGet]
         public async Task<IActionResult> GetList()
         {
-            var result = await _userService.GetList();
+            var result = await _userService.GetList(User.IsInRole("user"));
             return Ok(result);
         }
 
@@ -51,6 +51,7 @@ namespace Demo4.Controllers
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
+        [Authorize(Roles = "administrator")]
         [HttpPost]
         public IActionResult Post(DtoUserAdd item)
         {
