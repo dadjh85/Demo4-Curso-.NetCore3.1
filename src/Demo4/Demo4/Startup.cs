@@ -30,9 +30,6 @@ namespace Demo4
         /// </summary>
         public readonly string AllowAllOriginsCors = "AllowAllOrigins";
 
-
-
-
         /// <summary>
         /// Object of load the personal configuration
         /// </summary>
