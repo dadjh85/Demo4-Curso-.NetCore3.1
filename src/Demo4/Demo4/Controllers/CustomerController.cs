@@ -30,7 +30,8 @@ namespace Demo4.Controllers
         /// <returns></returns>
         public IActionResult Get(int id)
         {
-            return Content($"Customer {id} - Message Culture: {_localizer["se ha producido un error al insertar"]}");
+            var culture = CultureInfo.CurrentCulture.Name;
+            return Content($"Customer {id} - Message Culture: {_localizer["MessageErrorInsert", culture]}");
         }
     }
 }
