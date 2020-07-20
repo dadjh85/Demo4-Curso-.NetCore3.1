@@ -1,11 +1,13 @@
 using Demo4.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Service.UserService;
+using System.Globalization;
 
 //[assembly: ApiController]
 [assembly: ApiConventionType(typeof(DefaultApiConventions))]
@@ -41,6 +43,7 @@ namespace Demo4
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
             services.AddSwagger();
             services.AddControllers();
             services.AddScoped<IUserService, UserService>();
@@ -58,6 +61,7 @@ namespace Demo4
         /// <param name="env"></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseInternationalLocalization();
             app.UseCors(AllowAllOriginsCors);
 
             if (env.IsDevelopment())

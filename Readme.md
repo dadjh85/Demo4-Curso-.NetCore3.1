@@ -10,7 +10,7 @@
 	* Tokens JWT
 	* CORS 
 * Integración de Swagger en un API-REST .NET Core
-* Manipulación de recursos (resx)
+* .NET Core Multiidoma
 
 
 

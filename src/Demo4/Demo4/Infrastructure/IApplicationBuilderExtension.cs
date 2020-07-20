@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Hosting;
+using System.Globalization;
 
 namespace Demo4.Infrastructure
 {
@@ -27,6 +29,29 @@ namespace Demo4.Infrastructure
                 });
             }
 
+            return app;
+        }
+
+        /// <summary>
+        /// Add cultures in app
+        /// </summary>
+        /// <param name="app"></param>
+        /// <returns></returns>
+        public static IApplicationBuilder UseInternationalLocalization(this IApplicationBuilder app)
+        {
+            var suporrtedCultures = new[]
+            {
+                new CultureInfo("en-US"),
+                new CultureInfo("es-Es")
+            };
+            var locOptions = new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture("es-Es"),
+                SupportedCultures = suporrtedCultures,
+                SupportedUICultures = suporrtedCultures
+            };
+
+            app.UseRequestLocalization(locOptions);
             return app;
         }
     }
